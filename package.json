@@ -1,0 +1,56 @@
+{
+    "name": "mirage-no-xen-actual",
+    "exportedEnvVars": {
+        "mirage_no_xen_installed": {
+            "global": true,
+            "globalCollisionBehavior": "clobber",
+            "val": "true"
+        },
+        "CAML_LD_LIBRARY_PATH": {
+            "global": true,
+            "resolveAsRelativePath": true,
+            "globalCollisionBehavior": "joinPath",
+            "val": "./_build/ocamlfind/lib/stublibs"
+        },
+        "mirage_no_xen_version": {
+            "global": true,
+            "globalCollisionBehavior": "clobber",
+            "val": "1.0.0"
+        },
+        "FINDLIB": {
+            "global": true,
+            "resolveAsRelativePath": true,
+            "globalCollisionBehavior": "joinPath",
+            "val": "./_build/ocamlfind/lib"
+        },
+        "version": {
+            "global": true,
+            "globalCollisionBehavior": "clobber",
+            "val": "1.0.0"
+        },
+        "mirage_no_xen_enable": {
+            "global": true,
+            "globalCollisionBehavior": "clobber",
+            "val": "enable"
+        },
+        "PATH": {
+            "global": true,
+            "resolveAsRelativePath": true,
+            "globalCollisionBehavior": "joinPath",
+            "val": "./_build/ocamlfind/bin"
+        }
+    },
+    "version": "1.0.0",
+    "dependencies": {
+        "substs": "https://github.com/yunxing/substs.git",
+        "nopam": "https://github.com/yunxing/nopam.git",
+        "opam-installer-bin": "https://github.com/yunxing/opam-installer-bin.git",
+        "dependency-env": "https://github.com/npm-ml/dependency-env.git"
+    },
+    "scripts": {
+        "postinstall": "eval $(dependencyEnv) && nopam && (opam-installer --prefix=$opam_prefix || true)"
+    },
+    "peerDependencies": {
+        "@opam-alpha/ocaml": ">= 4.2.3"
+    }
+}
